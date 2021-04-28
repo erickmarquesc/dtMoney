@@ -1,17 +1,48 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import {createServer, Model} from 'miragejs';
+import {App} from './App';
 
+//CRIANDO UMA API FALSA SÓ PARA TESTES 
+createServer({
+
+  //Banco de dados do miragejs
+  models:{
+    transaction: Model,
+  },
+
+  seeds(server){
+    server.db.loadData({
+      transactions:[ //NOME DA TABELA, NOME DO MODEL NO PLURAL
+        {
+          id: 1,
+          title: 'Freelance de website',
+          type: 'deposit',
+          category: 'Dev',
+          amount: 6000,
+          createdAt: new Date('2021-04-12 16:00:00')
+        }
+      ]
+    })
+  },
+
+  routes() {
+    this.namespace = 'api';
+
+    this.get('/transactions', () => {
+      return this.schema.all('transaction')
+    })
+
+    this.post('/transactions', (schema, response) => {
+      const data = JSON.parse(response.requestBody)
+
+      return schema.create('transaction', data) //schema é o banco de dados
+    })
+  }
+})
 ReactDOM.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
