@@ -35,6 +35,22 @@ export const Container = styled.div`
       &.withdraw{
         color: var(--red);
       }
+
+      button{
+        font-size: 1rem;
+        color: var(--shape);
+        background: var(--red);
+        border: 0;
+        padding: 0 1rem;
+        border-radius: 0.25rem;
+        height: 2rem;
+
+        transition: filter 0.5s;
+
+        &:hover{
+          filter: brightness(0.9); //Faz com que o objeto todo escureça
+        }
+      }
     }
   }
 `;
