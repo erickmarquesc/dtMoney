@@ -1,3 +1,4 @@
+import { useTransactionModal } from "../../hooks/useTransactionModal";
 import { useTransactions } from "../../hooks/useTransactions";
 import { Container } from "./styles";
 
@@ -5,7 +6,7 @@ export function TransactionsTable(){
   
   //PARA CONSUMIR O CONTEXTO
   const {transactions} = useTransactions();
-  
+  const {handleOpenDeleteTransactionModal} = useTransactionModal();
   return(
     <Container>
       <table>
@@ -15,6 +16,7 @@ export function TransactionsTable(){
             <th>VALOR</th>
             <th>CATEGORIA</th>
             <th>DATA</th>
+            <th>EDITAR</th>
           </tr>
         </thead>
         <tbody>
@@ -37,6 +39,12 @@ export function TransactionsTable(){
                   {new Intl.DateTimeFormat('pt-BR').format(
                     new Date(transaction.createdAt) //FORMATO DE CALENDÁRIO
                   )}
+                </td>
+
+                <td>
+                <button type="button" onClick={handleOpenDeleteTransactionModal} disabled>
+                  EXCLUIR
+                </button>
                 </td>
 
               </tr>

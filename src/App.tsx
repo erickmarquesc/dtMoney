@@ -4,7 +4,8 @@ import { GlobalStyle } from './styles/global';
 import { NewTransactionModal } from './components/NewTransactionsModal';
 import { TransactionsProvider } from './hooks/useTransactions';
 import Modal from 'react-modal';
-import { TransactionModalProvider } from './hooks/useOnOpenNewTransactionModal';
+import { TransactionModalProvider } from './hooks/useTransactionModal';
+import { DeleteTransactionModal } from './components/DeleteTransaction';
 
 Modal.setAppElement('#root');// Importante pasa acessibilidade
 
@@ -21,6 +22,7 @@ export function App() {
         <Dashboard />
 
         <NewTransactionModal />
+        <DeleteTransactionModal/>
 
       </TransactionModalProvider>
     </TransactionsProvider>
