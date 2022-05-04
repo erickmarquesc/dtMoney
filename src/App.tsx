@@ -6,8 +6,9 @@ import { NewTransactionModal } from './components/NewTransactionsModal';
 import { TransactionsProvider } from './hooks/useTransactions';
 import Modal from 'react-modal';
 
-Modal.setAppElement('#root');
+Modal.setAppElement('#root');// Importante pasa acessibilidade
 
+// Quando usamos o export dessa maneira temos a segurança do nome da função 
 export function App() {
   const [isNewTransactionModalOpen, setIsNewTransactionModalOpen] = useState(false);
 
