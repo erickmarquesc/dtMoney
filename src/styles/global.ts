@@ -2,14 +2,14 @@ import {createGlobalStyle} from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
   :root{
-    --background: #f0f2f5;
     --red: #e52e4d;
-    --green: #33CC95;
     --blue: #5429cc;
+    --green: #33CC95;
+    --shape: #ffffff; 
+    --text-body: #969cb3;
+    --background: #f0f2f5;
     --blue-light: #6933ff;
     --text-title: #363f5f;
-    --text-body: #969cb3;
-    --shape: #ffffff; 
   }
 
   *{
@@ -31,9 +31,10 @@ export const GlobalStyle = createGlobalStyle`
   então as fontes já vem por padrão com size de 16px sabendo disso
   usamos tbm a medida rem para se ajustar com as resoluções de tela e tbm
   usamos % para configurações de usuários possam ser utilizadas pelos app */
+  
   html{
     @media(max-width:1080px){
-      font-size:93.75%; // 15px
+      font-size:93.75%; // 15px (15/16)*100
     }
     @media(max-width:720px){
       font-size:87.5%; // 14px
