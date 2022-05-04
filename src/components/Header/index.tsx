@@ -1,18 +1,17 @@
 import imgLogo from '../../assets/logo.svg';
+import { useTransactionModal } from '../../hooks/useOnOpenNewTransactionModal';
 import { Container, Content } from './styles';
 
-interface IHeaderProps{
-  onOpenNewTransactionModal: () => void;
-}
-
 /* O Header esta recebendo a informação do estado para verificar se é True | False */
-export function Header({onOpenNewTransactionModal}:IHeaderProps){
+export function Header(){
   
+  const {handleOpenNewTransactionModal} = useTransactionModal();
+
   return(
     <Container>
       <Content>
         <img src={imgLogo} alt="dt money"/>
-        <button type="button" onClick={onOpenNewTransactionModal}>
+        <button type="button" onClick={handleOpenNewTransactionModal}>
           Nova transação
         </button>
       </Content>

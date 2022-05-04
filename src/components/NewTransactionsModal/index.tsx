@@ -5,13 +5,11 @@ import Modal from 'react-modal';
 import imgClose from '../../assets/close.svg';
 import imgIncome from '../../assets/income.svg';
 import imgOutcome from '../../assets/outcome.svg';
+import { useTransactionModal } from '../../hooks/useOnOpenNewTransactionModal';
 
-interface InewTransactionModalProps{
-  isOpen: boolean;
-  onRequestClose: () => void;
-}
-export function NewTransactionModal({isOpen, onRequestClose}:InewTransactionModalProps){
-  
+
+export function NewTransactionModal(){
+  const {isNewTransactionModalOpen,handleCloseNewTransactionModal} = useTransactionModal();
   const {createTransaction} = useTransactions();
 
   const [title, setTitle] = useState('');
@@ -34,19 +32,19 @@ export function NewTransactionModal({isOpen, onRequestClose}:InewTransactionModa
       setAmount(0);
       setCategory('')
       setType('deposit');
-      onRequestClose();
+      handleCloseNewTransactionModal();
   }; 
 
   return(
     <Modal 
-      isOpen={isOpen}
-      onRequestClose={onRequestClose}
+      isOpen={isNewTransactionModalOpen}
+      onRequestClose={handleCloseNewTransactionModal}
       overlayClassName='react-modal-overlay'
       className='react-modal-content'
     >
       <button 
         type='button' 
-        onClick={onRequestClose}
+        onClick={handleCloseNewTransactionModal}
         className='react-modal-close'
       >
         <img src={imgClose} alt='Fechar modal'/>
