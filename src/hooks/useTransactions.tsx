@@ -13,7 +13,7 @@ interface Transaction{ // SERVE PARA TIPAR O ARREI -- É ISSO QUE UMA TRANSACTIO
 type TransactionInput = Omit<Transaction, 'id' | 'createdAt'>; // AQUI EU OMITO APENAS DOIS ELEMENTOS QUE SÃO CRIADOS AUTOMATICAMENTE  
 
 interface TransactionsProviderProps{ // AQUI TIPAMOS AS PROPS DE TransactionsProvider PARA RECEBER "FILHOS"
-  children: ReactNode;
+  children: ReactNode; // Pode conter qualquer elemento válido para o React
 }
 
 interface TransactionsContextData{ // AQUI TIPAMOS O QUE SERÁ PASSADO DENTRO DO CONTEXTO
