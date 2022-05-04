@@ -5,7 +5,7 @@ import Modal from 'react-modal';
 import imgClose from '../../assets/close.svg';
 import imgIncome from '../../assets/income.svg';
 import imgOutcome from '../../assets/outcome.svg';
-import { useTransactionModal } from '../../hooks/useOnOpenNewTransactionModal';
+import { useTransactionModal } from '../../hooks/useTransactionModal';
 
 
 export function NewTransactionModal(){
@@ -26,7 +26,8 @@ export function NewTransactionModal(){
         amount,
         category,
         type,
-      })
+      }
+    );
 
       setTitle('');
       setAmount(0);

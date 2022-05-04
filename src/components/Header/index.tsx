@@ -1,5 +1,5 @@
 import imgLogo from '../../assets/logo.svg';
-import { useTransactionModal } from '../../hooks/useOnOpenNewTransactionModal';
+import { useTransactionModal } from '../../hooks/useTransactionModal';
 import { Container, Content } from './styles';
 
 /* O Header esta recebendo a informação do estado para verificar se é True | False */
