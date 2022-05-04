@@ -11,7 +11,10 @@ interface ITransactionModalProvider {
 interface ITransactionModalContextData {
   handleOpenNewTransactionModal: () => Promise<void>;
   handleCloseNewTransactionModal: () => Promise<void>;
+  handleOpenDeleteTransactionModal: () => Promise<void>;
+  handleCloseDeleteTransactionModal: () => Promise<void>;
   isNewTransactionModalOpen: IModal;
+  isDeleteTransactionModalOpen: IModal;
 }
 
 // Cria o contexto
@@ -20,6 +23,7 @@ const TransactionModalContext = createContext<ITransactionModalContextData>({} a
 // Função principal do contexto
 export function TransactionModalProvider({ children }: ITransactionModalProvider) {
   const [isNewTransactionModalOpen, setIsNewTransactionModalOpen] = useState<IModal>(false);
+  const [isDeleteTransactionModalOpen, setIsDeleteTransactionModalOpen] = useState<IModal>(false);
 
   async function handleOpenNewTransactionModal() {
     setIsNewTransactionModalOpen(true);
@@ -29,8 +33,23 @@ export function TransactionModalProvider({ children }: ITransactionModalProvider
     setIsNewTransactionModalOpen(false);
   }
 
+  async function handleOpenDeleteTransactionModal() {
+    setIsDeleteTransactionModalOpen(true);
+  }
+
+  async function handleCloseDeleteTransactionModal() {
+    setIsDeleteTransactionModalOpen(false);
+  }
+
   return (
-    <TransactionModalContext.Provider value={{ handleCloseNewTransactionModal, handleOpenNewTransactionModal, isNewTransactionModalOpen }}>
+    <TransactionModalContext.Provider value={{
+      handleOpenNewTransactionModal,
+      handleCloseNewTransactionModal,
+      handleOpenDeleteTransactionModal,
+      handleCloseDeleteTransactionModal,
+      isNewTransactionModalOpen,
+      isDeleteTransactionModalOpen 
+      }}>
       {children}
     </TransactionModalContext.Provider>
   )
