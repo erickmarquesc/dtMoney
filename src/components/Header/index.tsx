@@ -1,11 +1,12 @@
 import imgLogo from '../../assets/logo.svg';
 import { Container, Content } from './styles';
 
-interface HeaderProps{
+interface IHeaderProps{
   onOpenNewTransactionModal: () => void;
 }
 
-export function Header({onOpenNewTransactionModal}:HeaderProps){
+/* O Header esta recebendo a informação do estado para verificar se é True | False */
+export function Header({onOpenNewTransactionModal}:IHeaderProps){
   
   return(
     <Container>
